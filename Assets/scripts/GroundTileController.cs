@@ -14,7 +14,7 @@ public class GroundTileController : MonoBehaviour
 
     enum Stages
     {
-        Solid, Island, Destroyed
+        Solid, Island
     }
 
     private Stages _currentStage = Stages.Solid;
@@ -42,11 +42,7 @@ public class GroundTileController : MonoBehaviour
                         solid.SetActive(false);
                         break;
                     case Stages.Island:
-                        _currentStage = Stages.Destroyed;
-                        island.SetActive(false);
-                        break;
-                    case Stages.Destroyed:
-                        gameObject.GetComponent<Collider>().enabled = false;
+                       Destroy(gameObject);
                         break;
                 }
 
