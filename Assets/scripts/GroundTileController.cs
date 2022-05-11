@@ -19,14 +19,12 @@ public class GroundTileController : MonoBehaviour
 
     private Stages _currentStage = Stages.Solid;
     
-    // Start is called before the first frame update
     void Start()
     {
         solid = gameObject.transform.GetChild(1).gameObject;
         island = gameObject.transform.GetChild(0).gameObject;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if (_playerOnTop)

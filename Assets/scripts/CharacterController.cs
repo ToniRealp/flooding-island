@@ -7,18 +7,15 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
-    private new Rigidbody _rigidbody;
+    private Rigidbody _rigidbody;
     public Transform target;
-    public float targetVelocity = 10;
+    public float velocity = 10;
 
-    public float forceStrength = 500;
-    // public Vector3 targetSpeed = new Vector3(5,0,5);
-  
     private Animator _animator;
     private static readonly int IsMoving = Animator.StringToHash("isMoving");
+    private static readonly int IsFalling = Animator.StringToHash("isFalling");
 
-    private bool onSolidGround = true;
-
+    private bool _onSolidGround = true;
 
     private void Start()
     {
@@ -40,26 +37,26 @@ public class CharacterController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if ((target.position - transform.position).magnitude > 5 && onSolidGround)
+        if ((target.position - transform.position).magnitude > 5 && _onSolidGround)
         {
             MovePlayer();
         }
 
-        onSolidGround = false;
+        _onSolidGround = false;
     }
 
     void MovePlayer()
     {
         var targetDirection = (target.position - transform.position).normalized;
         transform.rotation = Quaternion.LookRotation(targetDirection, Vector3.up);
-        _rigidbody.MovePosition(transform.position + transform.forward * (targetVelocity * Time.fixedDeltaTime));
+        _rigidbody.MovePosition(transform.position + transform.forward * (velocity * Time.fixedDeltaTime));
     }
 
     private void OnCollisionStay(Collision collisionInfo)
     {
         if (collisionInfo.gameObject.CompareTag("Ground"))
         {
-            onSolidGround = true;
+            _onSolidGround = true;
         }
     }
 
@@ -67,7 +64,7 @@ public class CharacterController : MonoBehaviour
     {
         if (other.CompareTag("SinkTrigger"))
         {
-            _animator.SetTrigger("isFalling");
+            _animator.SetTrigger(IsFalling);
         }
     }
 }
