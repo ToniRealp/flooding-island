@@ -21,6 +21,8 @@ TagManager:
   - CoreStarElement
   - Reward
   - objectiveTriangle
+  - Ground
+  - SinkTrigger
   layers:
   - Default
   - TransparentFX
