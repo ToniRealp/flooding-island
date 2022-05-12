@@ -10,6 +10,7 @@ public class GroundTileController : MonoBehaviour
     public GameObject island;
     public GameObject waterSplashEffect;
     public GameObject groundDustEffect;
+    public GameObject groundBreakEffect;
     
     public float timeToBreak = 3;
     private bool _playerOnTop = false;
@@ -39,17 +40,18 @@ public class GroundTileController : MonoBehaviour
             
             if (timeToBreak <= 0)
             {
+                Vector3 spawnPoint = transform.position;
+                spawnPoint.y += 5;
+                
                 switch (_currentStage)
                 {
                     case Stages.Solid:
                         _currentStage = Stages.Island;
-                        // Instantiate(waterSplashEffect,transform);
+                        Instantiate(groundBreakEffect, spawnPoint, Quaternion.Euler(90,0,0));
                         solid.SetActive(false);
                         break;
                     case Stages.Island:
                         island.SetActive(false);
-                        Vector3 spawnPoint = transform.position;
-                        spawnPoint.y += 5;
                         Instantiate(waterSplashEffect, spawnPoint, Quaternion.Euler(90,0,0));
                         Destroy(gameObject);
                         break;
