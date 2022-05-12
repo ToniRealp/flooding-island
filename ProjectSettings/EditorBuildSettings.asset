@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FloodingIsland.unity
     guid: 28b01497748dc1a4599c1e6bca09c4a1
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 0a86c9bc269132849b2a507ec43a2874
   m_configObjects: {}
