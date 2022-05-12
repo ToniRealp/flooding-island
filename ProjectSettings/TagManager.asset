@@ -57,6 +57,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Particle effects
+    uniqueID: 1046609191
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
