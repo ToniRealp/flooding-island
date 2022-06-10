@@ -59,7 +59,7 @@ public class DeepTracking : MonoBehaviour
             if (this.InvertX) xPos = 1 - xPos;
             if (this.InvertY) yPos = 1 - yPos;
 
-            this.m_WorldPosition = new Vector3(xPos, 0f, yPos) * 100;
+            this.m_WorldPosition = new Vector3(xPos, 0.1f, yPos) * 100;
             transform.position = this.m_WorldPosition;
         }
 

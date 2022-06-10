@@ -16,6 +16,7 @@ public class CharacterController : MonoBehaviour
     private static readonly int IsFalling = Animator.StringToHash("isFalling");
 
     private bool _onSolidGround = true;
+    private bool isMoving = false;
 
     private void Start()
     {
@@ -25,7 +26,7 @@ public class CharacterController : MonoBehaviour
 
     void Update()
     {
-        if ((target.position - transform.position).magnitude > 5)
+        if (isMoving)
         {
             _animator.SetBool(IsMoving, true);
         }
@@ -37,19 +38,25 @@ public class CharacterController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if ((target.position - transform.position).magnitude > 5 && _onSolidGround)
-        {
+        
             MovePlayer();
-        }
-
-        _onSolidGround = false;
+            _onSolidGround = false;
     }
 
     void MovePlayer()
     {
-        var targetDirection = (target.position - transform.position).normalized;
-        transform.rotation = Quaternion.LookRotation(targetDirection, Vector3.up);
-        _rigidbody.MovePosition(transform.position + transform.forward * (velocity * Time.fixedDeltaTime));
+        var targetPosition = new Vector3(target.position.x, 0, target.position.z);
+        if ((targetPosition - transform.position).magnitude > 5 && _onSolidGround)
+        {
+            var targetDirection = (targetPosition - transform.position).normalized;
+            transform.rotation = Quaternion.LookRotation(targetDirection, Vector3.up);
+            _rigidbody.MovePosition(transform.position + transform.forward * (velocity * Time.fixedDeltaTime));
+            isMoving = true;
+        }
+        else
+        {
+            isMoving = false;
+        }
     }
 
     private void OnCollisionStay(Collision collisionInfo)
