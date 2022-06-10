@@ -707,7 +707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1365778333}
-  velocity: 10
+  velocity: 5
 --- !u!65 &397154190
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2831,7 +2831,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 680119641}
-  velocity: 10
+  velocity: 5
 --- !u!65 &1966592742
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3610,10 +3610,10 @@ MonoBehaviour:
   normalsScale: 0.36
   normalsSpeed: 0.04
   refractionStrength: 0.017
-  waveVisuals: {x: 0.25, y: 13.31, z: 1.38}
+  waveVisuals: {x: 0.25, y: 13.31, z: 0.25}
   waveSteepness: 0.25
   waveLength: 13.31
-  waveSpeed: 1.38
+  waveSpeed: 0.25
   waveDirections: {x: 0.102, y: 0.674, z: 1, w: 0.461}
   waveDirection1: 0.102
   waveDirection2: 0.674
