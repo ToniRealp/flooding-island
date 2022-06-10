@@ -12,7 +12,7 @@ public class GroundTileController : MonoBehaviour
     public GameObject groundDustEffect;
     public GameObject groundBreakEffect;
     
-    public float timeToBreak = 3;
+    public float timeToBreak = 6;
     private bool _playerOnTop = false;
 
     enum Stages
