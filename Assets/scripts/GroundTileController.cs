@@ -11,6 +11,7 @@ public class GroundTileController : MonoBehaviour
     public GameObject waterSplashEffect;
     public GameObject groundDustEffect;
     public GameObject groundBreakEffect;
+    public Outline outline;
     
     public float timeToBreak = 6;
     private bool _playerOnTop = false;
@@ -31,6 +32,9 @@ public class GroundTileController : MonoBehaviour
         
         groundDustEffect = gameObject.transform.GetChild(2).gameObject;
         groundDustEffect.SetActive(false);
+
+        outline = GetComponent<Outline>();
+        outline.enabled = false;
         
         _audioManager = FindObjectOfType<AudioManager>();
     }
@@ -79,6 +83,16 @@ public class GroundTileController : MonoBehaviour
         {
             _playerOnTop = true;
            _audioManager.Play("Rumble");
+           outline.enabled = true;
+           
+           if (collision.gameObject.name == "Player1")
+           {
+               outline.OutlineColor = Color.red;
+           }
+           else
+           {
+               outline.OutlineColor = Color.blue;
+           }
         }
     }
     
@@ -99,6 +113,7 @@ public class GroundTileController : MonoBehaviour
         {
             _playerOnTop = false;
             _audioManager.Stop("Rumble");
+            outline.enabled = false;
         }
     }
 }
