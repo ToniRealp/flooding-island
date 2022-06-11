@@ -15,6 +15,8 @@ public class GroundTileController : MonoBehaviour
     public float timeToBreak = 6;
     private bool _playerOnTop = false;
 
+    private AudioManager _audioManager;
+
     enum Stages
     {
         Solid, Island
@@ -29,6 +31,8 @@ public class GroundTileController : MonoBehaviour
         
         groundDustEffect = gameObject.transform.GetChild(2).gameObject;
         groundDustEffect.SetActive(false);
+        
+        _audioManager = FindObjectOfType<AudioManager>();
     }
     
     void Update()
@@ -49,9 +53,12 @@ public class GroundTileController : MonoBehaviour
                         _currentStage = Stages.Island;
                         Instantiate(groundBreakEffect, spawnPoint, Quaternion.Euler(90,0,0));
                         solid.SetActive(false);
+                        _audioManager.Play("Break");
                         break;
                     case Stages.Island:
                         island.SetActive(false);
+                        _audioManager.Play("Break");
+                        _audioManager.Stop("Rumble");
                         Instantiate(waterSplashEffect, spawnPoint, Quaternion.Euler(90,0,0));
                         Destroy(gameObject);
                         break;
@@ -71,6 +78,18 @@ public class GroundTileController : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             _playerOnTop = true;
+           _audioManager.Play("Rumble");
+        }
+    }
+    
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (!_audioManager.IsPlaying("Rumble"))
+            {
+                _audioManager.Play("Rumble");    
+            }
         }
     }
     
@@ -79,6 +98,7 @@ public class GroundTileController : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             _playerOnTop = false;
+            _audioManager.Stop("Rumble");
         }
     }
 }

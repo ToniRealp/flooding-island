@@ -2395,6 +2395,24 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 24300002, guid: 0893ca659bad46c4687098c2389aa2a7, type: 2}
     source: {fileID: 0}
+  - name: Break
+    clip: {fileID: 8300000, guid: 7eac23c104c2f564396b618dda383fe2, type: 3}
+    volume: 0.5
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 24300002, guid: 0893ca659bad46c4687098c2389aa2a7, type: 2}
+    source: {fileID: 0}
+  - name: Rumble
+    clip: {fileID: 8300000, guid: e3bb88a866608d64c9e884fb5620441a, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 24300002, guid: 0893ca659bad46c4687098c2389aa2a7, type: 2}
+    source: {fileID: 0}
 --- !u!1 &1681546032
 GameObject:
   m_ObjectHideFlags: 0
@@ -2799,7 +2817,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: e4299bf26a09e9049839e1a1b75e562c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e4299bf26a09e9049839e1a1b75e562c, type: 3}
       propertyPath: m_LocalPosition.x
