@@ -15,6 +15,8 @@ public class CharacterController : MonoBehaviour
     private static readonly int IsMoving = Animator.StringToHash("isMoving");
     private static readonly int IsFalling = Animator.StringToHash("isFalling");
 
+    public AudioManager audioManager;
+
     private bool _onSolidGround = true;
     private bool isMoving = false;
 
@@ -29,10 +31,15 @@ public class CharacterController : MonoBehaviour
         if (isMoving)
         {
             _animator.SetBool(IsMoving, true);
+            if (!audioManager.IsPlaying("Walk"))
+            {
+                audioManager.Play("Walk");
+            }
         }
         else
         {
             _animator.SetBool(IsMoving, false);
+            audioManager.Stop("Walk");
         }
     }
 
@@ -72,6 +79,7 @@ public class CharacterController : MonoBehaviour
         if (other.CompareTag("SinkTrigger"))
         {
             _animator.SetTrigger(IsFalling);
+            audioManager.Play("Splash");
         }
     }
 }
