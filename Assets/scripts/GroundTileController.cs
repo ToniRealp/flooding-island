@@ -13,7 +13,7 @@ public class GroundTileController : MonoBehaviour
     public GameObject groundBreakEffect;
     public Outline outline;
     
-    public float timeToBreak = 6;
+    private float timeToBreak = 6;
     private bool _playerOnTop = false;
     private bool playing = false;
 

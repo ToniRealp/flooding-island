@@ -4663,11 +4663,11 @@ MonoBehaviour:
   surfaceFoamBlend: 1
   surfaceFoamColor1: {r: 1, g: 1, b: 1, a: 0.3215686}
   surfaceFoamColor2: {r: 1, g: 1, b: 1, a: 0.7294118}
-  surfaceFoamMovement: {x: 0.674, y: 0.1, z: 0.633, w: 0.07}
+  surfaceFoamMovement: {x: 0.674, y: 0.06, z: 0.633, w: 0.04}
   surfaceFoamDirection1: 0.674
   surfaceFoamDirection2: 0.633
-  surfaceFoamSpeed1: 0.1
-  surfaceFoamSpeed2: 0.07
+  surfaceFoamSpeed1: 0.06
+  surfaceFoamSpeed2: 0.04
   surfaceFoamTilingAndOffset: {x: -1, y: -1, z: 1.467, w: 1.726}
   surfaceFoamOffsetX: -1
   surfaceFoamOffsetY: -1
@@ -4712,10 +4712,10 @@ MonoBehaviour:
   normalsScale: 0.36
   normalsSpeed: 0.04
   refractionStrength: 0.017
-  waveVisuals: {x: 0.12, y: 13.31, z: 0.8}
+  waveVisuals: {x: 0.12, y: 13.31, z: 0.5}
   waveSteepness: 0.12
   waveLength: 13.31
-  waveSpeed: 0.8
+  waveSpeed: 0.5
   waveDirections: {x: 0.102, y: 0.674, z: 1, w: 0.461}
   waveDirection1: 0.102
   waveDirection2: 0.674
