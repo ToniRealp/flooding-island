@@ -17,4 +17,5 @@ public static class EventManager
     }
     
     public static readonly UnityEvent<OnGameOverInfo> OnGameOver = new UnityEvent<OnGameOverInfo>();
+    public static readonly UnityEvent OnGameStart = new UnityEvent();
 }

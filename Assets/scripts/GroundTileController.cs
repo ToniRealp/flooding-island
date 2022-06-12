@@ -15,6 +15,7 @@ public class GroundTileController : MonoBehaviour
     
     public float timeToBreak = 6;
     private bool _playerOnTop = false;
+    private bool playing = false;
 
     private AudioManager _audioManager;
 
@@ -24,6 +25,16 @@ public class GroundTileController : MonoBehaviour
     }
 
     private Stages _currentStage = Stages.Solid;
+    
+    private void OnEnable()
+    {
+        EventManager.OnGameStart.AddListener(() => { playing = true;});
+    }
+
+    private void OnDisable()
+    {
+        EventManager.OnGameStart.RemoveListener(() => { playing = true;});
+    }
     
     void Start()
     {
@@ -41,6 +52,8 @@ public class GroundTileController : MonoBehaviour
     
     void Update()
     {
+        if(!playing)
+            return;
         if (_playerOnTop)
         {
             timeToBreak -= Time.deltaTime;
@@ -82,8 +95,7 @@ public class GroundTileController : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             _playerOnTop = true;
-           _audioManager.Play("Rumble");
-           outline.enabled = true;
+            outline.enabled = true;
            
            if (collision.gameObject.name == "Player1")
            {
@@ -98,6 +110,8 @@ public class GroundTileController : MonoBehaviour
     
     private void OnCollisionStay(Collision collision)
     {
+        if(!playing)
+            return;
         if (collision.gameObject.CompareTag("Player"))
         {
             if (!_audioManager.IsPlaying("Rumble"))
@@ -109,6 +123,8 @@ public class GroundTileController : MonoBehaviour
     
     private void OnCollisionExit(Collision collision)
     {
+        if(!playing)
+            return;
         if (collision.gameObject.CompareTag("Player"))
         {
             _playerOnTop = false;

@@ -19,6 +19,17 @@ public class CharacterController : MonoBehaviour
 
     private bool _onSolidGround = true;
     private bool isMoving = false;
+    private bool playing = false;
+    
+    private void OnEnable()
+    {
+        EventManager.OnGameStart.AddListener(() => { playing = true;});
+    }
+
+    private void OnDisable()
+    {
+        EventManager.OnGameStart.RemoveListener(() => { playing = true;});
+    }
 
     private void Start()
     {
@@ -28,6 +39,8 @@ public class CharacterController : MonoBehaviour
 
     void Update()
     {
+        if(!playing)
+            return;
         if (isMoving)
         {
             _animator.SetBool(IsMoving, true);
@@ -45,9 +58,10 @@ public class CharacterController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
-            MovePlayer();
-            _onSolidGround = false;
+        if(!playing)
+            return;
+        MovePlayer();
+        _onSolidGround = false;
     }
 
     void MovePlayer()

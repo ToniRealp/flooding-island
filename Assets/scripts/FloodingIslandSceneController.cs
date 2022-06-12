@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class FloodingIslandSceneController : MonoBehaviour
 {
+    public GameStartColliderController player1ColliderController;
+    public GameStartColliderController player2ColliderController;
+
+    public float timeToStart = 3;
     private void OnEnable()
     {
         EventManager.OnGameOver.AddListener(ResetGame);
@@ -14,6 +18,20 @@ public class FloodingIslandSceneController : MonoBehaviour
     private void OnDisable()
     {
         EventManager.OnGameOver.RemoveListener(ResetGame);
+    }
+
+    private void Update()
+    {
+        if (player1ColliderController.playerReady && player2ColliderController.playerReady && timeToStart > 0)
+        {
+            timeToStart -= Time.deltaTime;
+        }
+
+        if (timeToStart <= 0)
+        {
+            EventManager.OnGameStart.Invoke();
+        }
+        
     }
 
     void ResetGame(EventManager.OnGameOverInfo gameOverInfo)
