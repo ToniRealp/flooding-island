@@ -7,22 +7,35 @@ public class GameStartColliderController : MonoBehaviour
 {
     public string playerCursorTag;
     public bool playerReady = false;
-    private GameObject particleSystem;
-
+    
+    private GameObject particleSystemActive;
+    private GameObject particleSystemInactive;
+    
     
     private void OnEnable()
     {
-        EventManager.OnGameStart.AddListener(() => { particleSystem.SetActive(false);});
+        EventManager.OnGameStart.AddListener(() =>
+        {
+            particleSystemActive.SetActive(false);
+            particleSystemInactive.SetActive(false);
+            
+        });
     }
 
     private void OnDisable()
     {
-        EventManager.OnGameStart.RemoveListener(() => { particleSystem.SetActive(false);});
+        EventManager.OnGameStart.RemoveListener(() =>
+        {
+            particleSystemActive.SetActive(false);
+            particleSystemInactive.SetActive(false);
+        });
     }
     
     private void Start()
     {
-        particleSystem = gameObject.transform.GetChild(0).gameObject;
+        particleSystemActive = gameObject.transform.GetChild(0).gameObject;
+        particleSystemInactive = gameObject.transform.GetChild(1).gameObject;
+        particleSystemActive.SetActive(false);
     }
 
     private void OnTriggerStay(Collider other)
@@ -30,6 +43,8 @@ public class GameStartColliderController : MonoBehaviour
         if (other.CompareTag(playerCursorTag))
         {
             playerReady = true;
+            particleSystemActive.SetActive(true);
+            particleSystemInactive.SetActive(false);
         }
     }
 
@@ -38,6 +53,8 @@ public class GameStartColliderController : MonoBehaviour
         if (other.CompareTag(playerCursorTag))
         {
             playerReady = false;
+            particleSystemActive.SetActive(false);
+            particleSystemInactive.SetActive(true);
         }
     }
 }
