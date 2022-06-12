@@ -15,7 +15,7 @@ public class CharacterController : MonoBehaviour
     private static readonly int IsMoving = Animator.StringToHash("isMoving");
     private static readonly int IsFalling = Animator.StringToHash("isFalling");
 
-    public AudioManager audioManager;
+    public AudioManager _audioManager;
 
     private bool _onSolidGround = true;
     private bool isMoving = false;
@@ -35,6 +35,8 @@ public class CharacterController : MonoBehaviour
     {
         _rigidbody = gameObject.GetComponent<Rigidbody>();
         _animator = gameObject.GetComponent<Animator>();
+        
+        _audioManager = FindObjectOfType<AudioManager>();
     }
 
     void Update()
@@ -44,15 +46,15 @@ public class CharacterController : MonoBehaviour
         if (isMoving)
         {
             _animator.SetBool(IsMoving, true);
-            if (!audioManager.IsPlaying("Walk"))
+            if (!_audioManager.IsPlaying("Walk"))
             {
-                audioManager.Play("Walk");
+                _audioManager.Play("Walk");
             }
         }
         else
         {
             _animator.SetBool(IsMoving, false);
-            audioManager.Stop("Walk");
+            _audioManager.Stop("Walk");
         }
     }
 
@@ -93,7 +95,7 @@ public class CharacterController : MonoBehaviour
         if (other.CompareTag("SinkTrigger"))
         {
             _animator.SetTrigger(IsFalling);
-            audioManager.Play("Splash");
+            _audioManager.Play("Splash");
         }
     }
 }

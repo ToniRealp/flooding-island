@@ -51,6 +51,6 @@ public class FloodingIslandSceneController : MonoBehaviour
 
     void ResetGame(EventManager.OnGameOverInfo gameOverInfo)
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("FloodingIsland");
     }
 }

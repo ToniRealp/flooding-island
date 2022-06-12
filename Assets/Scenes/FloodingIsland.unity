@@ -539,7 +539,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 4.4819e-41, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 6.8e-43, y: 2.7001934e-10, z: 6.78e-43, w: 41}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -563,6 +563,96 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1121006704}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &245706005
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 245706007}
+  - component: {fileID: 245706006}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &245706006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245706005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cedd7039480e3841b26eb9970b58d1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixerGroup: {fileID: 24300002, guid: 0893ca659bad46c4687098c2389aa2a7, type: 2}
+  sounds:
+  - name: Theme
+    clip: {fileID: 8300000, guid: 31f829f8dfc9ec84cbd8e49a5bdb3daa, type: 3}
+    volume: 0.401
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 24300002, guid: 0893ca659bad46c4687098c2389aa2a7, type: 2}
+    source: {fileID: 0}
+  - name: Walk
+    clip: {fileID: 8300000, guid: de5e77c869a044b4db892f404f2b4e2e, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 0.55
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 24300002, guid: 0893ca659bad46c4687098c2389aa2a7, type: 2}
+    source: {fileID: 0}
+  - name: Splash
+    clip: {fileID: 8300000, guid: c032047c1a6fd5d46af7a94de532ae88, type: 3}
+    volume: 0.5
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 24300002, guid: 0893ca659bad46c4687098c2389aa2a7, type: 2}
+    source: {fileID: 0}
+  - name: Break
+    clip: {fileID: 8300000, guid: 7eac23c104c2f564396b618dda383fe2, type: 3}
+    volume: 0.5
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 24300002, guid: 0893ca659bad46c4687098c2389aa2a7, type: 2}
+    source: {fileID: 0}
+  - name: Rumble
+    clip: {fileID: 8300000, guid: e3bb88a866608d64c9e884fb5620441a, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 24300002, guid: 0893ca659bad46c4687098c2389aa2a7, type: 2}
+    source: {fileID: 0}
+--- !u!4 &245706007
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245706005}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 58.256065, y: 12.470199, z: 29.637238}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &246401077
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -815,7 +905,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1365778333}
   velocity: 5
-  audioManager: {fileID: 1545961659}
+  _audioManager: {fileID: 0}
 --- !u!65 &397154190
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3078,7 +3168,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1545961658}
   - component: {fileID: 1545961657}
-  - component: {fileID: 1545961659}
   m_Layer: 0
   m_Name: SceneController
   m_TagString: Untagged
@@ -3117,65 +3206,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1545961659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1545961656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cedd7039480e3841b26eb9970b58d1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mixerGroup: {fileID: 24300002, guid: 0893ca659bad46c4687098c2389aa2a7, type: 2}
-  sounds:
-  - name: Theme
-    clip: {fileID: 8300000, guid: 31f829f8dfc9ec84cbd8e49a5bdb3daa, type: 3}
-    volume: 0.401
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 1
-    mixerGroup: {fileID: 24300002, guid: 0893ca659bad46c4687098c2389aa2a7, type: 2}
-    source: {fileID: 0}
-  - name: Walk
-    clip: {fileID: 8300000, guid: de5e77c869a044b4db892f404f2b4e2e, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 0.55
-    pitchVariance: 0
-    loop: 1
-    mixerGroup: {fileID: 24300002, guid: 0893ca659bad46c4687098c2389aa2a7, type: 2}
-    source: {fileID: 0}
-  - name: Splash
-    clip: {fileID: 8300000, guid: c032047c1a6fd5d46af7a94de532ae88, type: 3}
-    volume: 0.5
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 24300002, guid: 0893ca659bad46c4687098c2389aa2a7, type: 2}
-    source: {fileID: 0}
-  - name: Break
-    clip: {fileID: 8300000, guid: 7eac23c104c2f564396b618dda383fe2, type: 3}
-    volume: 0.5
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 24300002, guid: 0893ca659bad46c4687098c2389aa2a7, type: 2}
-    source: {fileID: 0}
-  - name: Rumble
-    clip: {fileID: 8300000, guid: e3bb88a866608d64c9e884fb5620441a, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 24300002, guid: 0893ca659bad46c4687098c2389aa2a7, type: 2}
-    source: {fileID: 0}
 --- !u!1 &1559058068
 GameObject:
   m_ObjectHideFlags: 0
@@ -3898,7 +3928,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 680119641}
   velocity: 5
-  audioManager: {fileID: 1545961659}
+  _audioManager: {fileID: 0}
 --- !u!65 &1966592742
 BoxCollider:
   m_ObjectHideFlags: 0
